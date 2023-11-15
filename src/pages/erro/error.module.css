@@ -1,0 +1,24 @@
+.notFound {
+    width: 100%;
+    /** o navegador não sabe que tem um header de 60 px
+        então tem que fazer o cálculo de 100% da viewheight menos  
+        os 60 px do header cabeçalho.**/
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.notFound h1 {
+    font-size: 120px;
+}
+
+.notFound a {
+    text-decoration: none;
+    background-color: #116feb;
+    color: white;
+    padding: 10px;
+    margin-top: 14px;
+}

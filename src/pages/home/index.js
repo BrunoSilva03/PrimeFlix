@@ -5,6 +5,7 @@ import styles from './home.module.css'
 
 function Home() {
     const [filmes, setFilmes] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function loadFilmes() {
@@ -17,12 +18,24 @@ function Home() {
             })
 
             //console.log(response.data.results.splice(0,10));
-            setFilmes(response.data.results.splice(0,10))
+            setFilmes(response.data.results.splice(0,10));
+            setLoading(false)
 
         }
 
         loadFilmes();
     }, [])
+
+
+
+    if(loading) {
+        return(
+            <div className={styles.loading}>
+                <h2>Carregando filmes...</h2>
+            </div>
+        )
+    }
+
     return(
         <div className={styles.container}>
            <div className={styles.lista_filmes}>
@@ -31,7 +44,7 @@ function Home() {
                     <article key={filme.id}>
                         <strong>{filme.title}</strong>
                         <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.title} />
-                        <Link to={`/filme/${filme.id}`}></Link>
+                        <Link to={`/filme/${filme.id}`}>Acessar</Link>
                     </article>
                 )
             })}

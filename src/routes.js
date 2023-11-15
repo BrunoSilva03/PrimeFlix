@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import Filme from './pages/filme';
 import Header from './components/header';
+import Erro from './pages/erro'
 
 function RoutesApp() {
     return(
@@ -14,7 +15,7 @@ function RoutesApp() {
 
                 <Route path="/filme/:id" element={ <Filme /> } />
 
-
+                <Route path="*" element={ <Erro /> } />
             </Routes>
         </BrowserRouter>
     )
