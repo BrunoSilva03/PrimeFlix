@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import api from '../../services/api'
 
+import { toast } from 'react-toastify'
+
 import styles from './filme.module.css'
 
 function Filme() {
@@ -60,18 +62,20 @@ function Filme() {
         const hasFilme = filmesSalvos.some((filmeSalvo) => filmeSalvo.id === filme.id)
 
         if(hasFilme) {
-            alert('Este filme já está salvo nos seus favoritos!!!');
+            toast.warn('Este filme já está salvo nos seus favoritos!!!')
             return;
         }
 
         //colocando mais um item no filmesSalvos, o filme que é o objeto que está no nosso useState
         filmesSalvos.push(filme);
+        
 
         //agora salvando um filme no localStorage, primeiro passa a chave que declaramos lá em cima,
         //depois JSON.stringify pra transformar pra uma string porque não conseguimos salvar um array
         //no localStorage
         localStorage.setItem("@primeflix", JSON.stringify(filmesSalvos));
-        alert("FILME SALVO COM SUCESSO!!!");
+        toast.success("Filme salvo com sucesso!")
+        
 
     }
 

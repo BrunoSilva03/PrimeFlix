@@ -1,6 +1,7 @@
 import styles from './favoritos.module.css';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Favoritos() {
     const [filmes, setFilmes] = useState([]);
@@ -29,6 +30,8 @@ function Favoritos() {
         localStorage.setItem("@primeflix", JSON.stringify(filtroFilmes));
         //salva no localStorage todos os filmes menos aquele com 
         //o id que excluímos da lista de filmes
+
+        toast.success("Filme removido com sucesso")
     }
 
     return(
